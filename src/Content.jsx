@@ -6,11 +6,14 @@ import { LogoutLink } from "./LogoutLink";
 import { IngredientsIndex } from "./IngredientsIndex";
 import { PantryIndex } from "./PantryIndex";
 import { PantryNew } from "./PantryNew";
+import { PantryShow } from "./PantryShow";
 import { Modal } from "./Modal";
 
 export function Content() {
   const [ingredients, setIngredients] = useState([]);
   const [pantry_items, setPantryItems] = useState([]);
+  const [isPantryShowVisible, setIsPantryShowVisible] = useState(false);
+  const [currentPantryItem, setCurrentPantryItem] = useState({});
 
   const handleIndexIngredients = () => {
     console.log("handleIndexIngredients");
@@ -36,6 +39,17 @@ export function Content() {
     });
   };
 
+  const handleShowPantry = (pantry_item) => {
+    console.log("handleShowPantry", pantry_item);
+    setIsPantryShowVisible(true);
+    setCurrentPantryItem(pantry_item);
+  };
+
+  const handleClose = () => {
+    console.log("hanleClose");
+    setIsPantryShowVisible(false);
+  };
+
   useEffect(handleIndexIngredients, []);
   useEffect(handleIndexPantry, []);
 
@@ -47,9 +61,9 @@ export function Content() {
       <Signup />
       <PantryNew onCreatePantry={handleCreatePantry} />
       <IngredientsIndex ingredients={ingredients} />
-      <PantryIndex pantry_items={pantry_items} />
-      <Modal show={true}>
-        <h1>Test</h1>
+      <PantryIndex pantry_items={pantry_items} onShowPantry={handleShowPantry} />
+      <Modal show={isPantryShowVisible} onClose={handleClose}>
+        <PantryShow pantry_item={currentPantryItem} />
       </Modal>
     </main>
   );

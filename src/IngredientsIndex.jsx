@@ -6,7 +6,7 @@ export function IngredientsIndex(props) {
       {props.ingredients.map((ingredient) => (
         <div key={ingredient.id}>
           <img src={ingredient.image_url} alt="ingredient image" width="300px" />
-          <h3>{ingredient.name}</h3>
+          <button onClick={() => props.onShowPantry(pantry_item)}>{ingredient.name}</button>
         </div>
       ))}
     </div>
