@@ -6,6 +6,7 @@ import { LogoutLink } from "./LogoutLink";
 import { IngredientsIndex } from "./IngredientsIndex";
 import { PantryIndex } from "./PantryIndex";
 import { PantryNew } from "./PantryNew";
+import { Modal } from "./Modal";
 
 export function Content() {
   const [ingredients, setIngredients] = useState([]);
@@ -47,6 +48,9 @@ export function Content() {
       <PantryNew onCreatePantry={handleCreatePantry} />
       <IngredientsIndex ingredients={ingredients} />
       <PantryIndex pantry_items={pantry_items} />
+      <Modal show={true}>
+        <h1>Test</h1>
+      </Modal>
     </main>
   );
 }
