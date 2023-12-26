@@ -6,12 +6,15 @@ import { LogoutLink } from "./LogoutLink";
 import { IngredientsIndex } from "./IngredientsIndex";
 import { PantryIndex } from "./PantryIndex";
 import { PantryNew } from "./PantryNew";
+import { IngredientsShow } from "./IngredientsShow";
 import { PantryShow } from "./PantryShow";
 import { Modal } from "./Modal";
 
 export function Content() {
   const [ingredients, setIngredients] = useState([]);
   const [pantry_items, setPantryItems] = useState([]);
+  const [isIngredientShowVisible, setIsIngredientShowVisible] = useState(false);
+  const [currentIngredient, setCurrentIngredient] = useState({});
   const [isPantryShowVisible, setIsPantryShowVisible] = useState(false);
   const [currentPantryItem, setCurrentPantryItem] = useState({});
 
@@ -37,6 +40,12 @@ export function Content() {
       setPantryItems([...pantry_items, response.data]);
       successCallback();
     });
+  };
+
+  const handleShowIngredient = (ingredient) => {
+    console.log("handleShowIngredient", ingredient);
+    setIsIngredientShowVisible(true);
+    setCurrentIngredient(ingredient);
   };
 
   const handleShowPantry = (pantry_item) => {
@@ -73,6 +82,7 @@ export function Content() {
   const handleClose = () => {
     console.log("handleClose");
     setIsPantryShowVisible(false);
+    setIsIngredientShowVisible(false);
   };
 
   useEffect(handleIndexIngredients, []);
@@ -85,7 +95,7 @@ export function Content() {
       <LogoutLink />
       <Signup />
       <PantryNew onCreatePantry={handleCreatePantry} />
-      <IngredientsIndex ingredients={ingredients} />
+      <IngredientsIndex ingredients={ingredients} onShowIngredient={handleShowIngredient} />
       <PantryIndex pantry_items={pantry_items} onShowPantry={handleShowPantry} />
       <Modal show={isPantryShowVisible} onClose={handleClose}>
         <PantryShow
@@ -93,6 +103,9 @@ export function Content() {
           onUpdatePantry={handleUpdatePantry}
           onDestroyPantryItem={handleDestroyPantryItem}
         />
+      </Modal>
+      <Modal show={isIngredientShowVisible} onClose={handleClose}>
+        <IngredientsShow ingredient={currentIngredient} />
       </Modal>
     </main>
   );
