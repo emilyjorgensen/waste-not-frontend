@@ -10,7 +10,7 @@ export function PantryIndex(props) {
           <p>Amount: {pantry_item.amount}</p>
           <p>Category: {pantry_item.category}</p>
           <p>Use By: {pantry_item.use_by_date}</p>
-          <button>More Info!</button>
+          <button onClick={() => props.onShowPantry(pantry_item)}>More Info!</button>
         </div>
       ))}
     </div>

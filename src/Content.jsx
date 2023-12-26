@@ -11,6 +11,8 @@ import { Modal } from "./Modal";
 export function Content() {
   const [ingredients, setIngredients] = useState([]);
   const [pantry_items, setPantryItems] = useState([]);
+  const [isPantryShowVisible, setIsPantryShowVisible] = useState(false);
+  const [currentPantryItem, setCurrentPantryItem] = useState({});
 
   const handleIndexIngredients = () => {
     console.log("handleIndexIngredients");
@@ -36,6 +38,17 @@ export function Content() {
     });
   };
 
+  const handleShowPantry = (pantry_item) => {
+    console.log("handleShowPantry", pantry_item);
+    setIsPantryShowVisible(true);
+    setCurrentPantryItem(pantry_item);
+  };
+
+  const handleClose = () => {
+    console.log("handleClose");
+    setIsPantryShowVisible(false);
+  };
+
   useEffect(handleIndexIngredients, []);
   useEffect(handleIndexPantry, []);
 
@@ -47,8 +60,8 @@ export function Content() {
       <Signup />
       <PantryNew onCreatePantry={handleCreatePantry} />
       <IngredientsIndex ingredients={ingredients} />
-      <PantryIndex pantry_items={pantry_items} />
-      <Modal show={true}>
+      <PantryIndex pantry_items={pantry_items} onShowPantry={handleShowPantry} />
+      <Modal show={isPantryShowVisible} onClose={handleClose}>
         <h1>Test</h1>
       </Modal>
     </main>
