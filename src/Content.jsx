@@ -6,6 +6,7 @@ import { LogoutLink } from "./LogoutLink";
 import { IngredientsIndex } from "./IngredientsIndex";
 import { PantryIndex } from "./PantryIndex";
 import { PantryNew } from "./PantryNew";
+import { PantryShow } from "./PantryShow";
 import { Modal } from "./Modal";
 
 export function Content() {
@@ -62,7 +63,7 @@ export function Content() {
       <IngredientsIndex ingredients={ingredients} />
       <PantryIndex pantry_items={pantry_items} onShowPantry={handleShowPantry} />
       <Modal show={isPantryShowVisible} onClose={handleClose}>
-        <h1>Test</h1>
+        <PantryShow pantry_item={currentPantryItem} />
       </Modal>
     </main>
   );
