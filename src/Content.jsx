@@ -9,6 +9,7 @@ import { PantryNew } from "./PantryNew";
 import { IngredientsShow } from "./IngredientsShow";
 import { PantryShow } from "./PantryShow";
 import { Modal } from "./Modal";
+import { Routes, Route, Link } from "react-router-dom";
 
 export function Content() {
   const [ingredients, setIngredients] = useState([]);
@@ -91,12 +92,20 @@ export function Content() {
   return (
     <main>
       <h1>Welcome to Waste Not: Kitchen!</h1>
-      <Login />
-      <LogoutLink />
-      <Signup />
-      <PantryNew onCreatePantry={handleCreatePantry} />
-      <IngredientsIndex ingredients={ingredients} onShowIngredient={handleShowIngredient} />
-      <PantryIndex pantry_items={pantry_items} onShowPantry={handleShowPantry} />
+      <Link to="/ingredients">All Ingredients</Link>
+      <br />
+      <Link to="/pantry">My Pantry</Link>
+      <Routes>
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/logout" element={<LogoutLink />} />
+        <Route
+          path="/ingredients"
+          element={<IngredientsIndex ingredients={ingredients} onShowIngredient={handleShowIngredient} />}
+        />
+        <Route path="/pantry" element={<PantryIndex pantry_items={pantry_items} onShowPantry={handleShowPantry} />} />
+      </Routes>
+
       <Modal show={isPantryShowVisible} onClose={handleClose}>
         <PantryShow
           pantry_item={currentPantryItem}
