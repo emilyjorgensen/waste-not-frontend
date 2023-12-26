@@ -105,7 +105,7 @@ export function Content() {
         />
       </Modal>
       <Modal show={isIngredientShowVisible} onClose={handleClose}>
-        <IngredientsShow ingredient={currentIngredient} />
+        <IngredientsShow ingredient={currentIngredient} onCreatePantry={handleCreatePantry} />
       </Modal>
     </main>
   );
