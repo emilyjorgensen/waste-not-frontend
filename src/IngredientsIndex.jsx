@@ -1,7 +1,5 @@
 /* eslint-disable react/prop-types */
 export function IngredientsIndex(props) {
-  console.log("onShowPantry IS A ", typeof props.onshowPantry); //log the type of onShowPantry
-
   return (
     <div>
       <h1>All ingredients</h1>

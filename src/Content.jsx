@@ -45,6 +45,31 @@ export function Content() {
     setCurrentPantryItem(pantry_item);
   };
 
+  const handleUpdatePantry = (id, params, successCallback) => {
+    console.log("handleUpdatePantry", params);
+    axios.patch(`http://localhost:3000/pantry_items/${id}.json`, params).then((response) => {
+      setPantryItems(
+        pantry_items.map((pantry_item) => {
+          if (pantry_item.id === response.data.id) {
+            return response.data;
+          } else {
+            return pantry_item;
+          }
+        })
+      );
+      successCallback();
+      handleClose();
+    });
+  };
+
+  const handleDestroyPantryItem = (pantry_item) => {
+    console.log("handleDestroyPantryItem", pantry_item);
+    axios.delete(`http://localhost:3000/pantry_items/${pantry_item.id}.json`).then((response) => {
+      setPantryItems(pantry_items.filter((p) => p.id !== pantry_item.id));
+      handleClose();
+    });
+  };
+
   const handleClose = () => {
     console.log("handleClose");
     setIsPantryShowVisible(false);
@@ -63,7 +88,11 @@ export function Content() {
       <IngredientsIndex ingredients={ingredients} />
       <PantryIndex pantry_items={pantry_items} onShowPantry={handleShowPantry} />
       <Modal show={isPantryShowVisible} onClose={handleClose}>
-        <PantryShow pantry_item={currentPantryItem} />
+        <PantryShow
+          pantry_item={currentPantryItem}
+          onUpdatePantry={handleUpdatePantry}
+          onDestroyPantryItem={handleDestroyPantryItem}
+        />
       </Modal>
     </main>
   );
