@@ -3,9 +3,9 @@ import { useState, useEffect } from "react";
 import { Signup } from "./Signup";
 import { Login } from "./Login";
 import { LogoutLink } from "./LogoutLink";
+import { Home } from "./Home";
 import { IngredientsIndex } from "./IngredientsIndex";
 import { PantryIndex } from "./PantryIndex";
-import { PantryNew } from "./PantryNew";
 import { IngredientsShow } from "./IngredientsShow";
 import { PantryShow } from "./PantryShow";
 import { Modal } from "./Modal";
@@ -91,11 +91,11 @@ export function Content() {
 
   return (
     <main>
-      <h1>Welcome to Waste Not: Kitchen!</h1>
       <Link to="/ingredients">All Ingredients</Link>
       <br />
       <Link to="/pantry">My Pantry</Link>
       <Routes>
+        <Route index element={<Home />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<LogoutLink />} />
