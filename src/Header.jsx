@@ -1,12 +1,24 @@
 import { Link } from "react-router-dom";
 
 export function Header() {
+  let authenticationLinks;
+  if (localStorage.jwt === undefined) {
+    authenticationLinks = (
+      <>
+        <Link to="/">Home</Link> | <Link to="/signup">Signup</Link> | <Link to="/login">Login</Link>
+      </>
+    );
+  } else {
+    authenticationLinks = (
+      <>
+        <Link to="/">Home</Link> | <Link to="/logout">Logout</Link>
+      </>
+    );
+  }
+
   return (
     <header>
-      <nav>
-        <Link to="/">Home</Link> | <Link to="/signup">Signup</Link> | <Link to="/login">Login</Link> |{" "}
-        <Link to="/logout">Logout</Link>
-      </nav>
+      <nav>{authenticationLinks}</nav>
     </header>
   );
 }

@@ -94,6 +94,7 @@ export function Content() {
       <Link to="/ingredients">All Ingredients</Link>
       <br />
       <Link to="/pantry">My Pantry</Link>
+      <br />
       <Routes>
         <Route index element={<Home />} />
         <Route path="/signup" element={<Signup />} />
