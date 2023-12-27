@@ -1,9 +1,31 @@
 /* eslint-disable react/prop-types */
+import { useState } from "react";
+
 export function PantryIndex(props) {
+  const [filteredPantry, setFilteredPantry] = useState(props.pantry_items);
+
+  const filterByCategory = (category) => {
+    setFilteredPantry(
+      props.pantry_items.filter((pantry_item) => {
+        return pantry_item.category === category;
+      })
+    );
+  };
+
+  const categories = Array.from(new Set(props.pantry_items.map((pantry_item) => pantry_item.category)));
+
   return (
     <div>
       <h1>My Pantry:</h1>
-      {props.pantry_items.map((pantry_item) => (
+      <select onChange={(e) => filterByCategory(e.target.value)}>
+        <option value="" disabled selected>
+          Select category
+        </option>
+        {categories.map((category) => {
+          return <option key={category}>{category}</option>;
+        })}
+      </select>
+      {filteredPantry.map((pantry_item) => (
         <div key={pantry_item.id}>
           <img src={pantry_item.image_url} alt="ingredient image" width="300px" />
           <p>Ingredient: {pantry_item.name}</p>
@@ -13,6 +35,7 @@ export function PantryIndex(props) {
           <button onClick={() => props.onShowPantry(pantry_item)}>More Info!</button>
         </div>
       ))}
+      {filteredPantry.length === 0 && <div>No pantry items matching the filter</div>}
     </div>
   );
 }
