@@ -30,8 +30,9 @@ export function Content() {
   const handleIndexPantry = () => {
     console.log("handleIndexPantry");
     axios.get("http://localhost:3000/pantry_items.json").then((response) => {
-      console.log(response.data);
-      setPantryItems(response.data);
+      let data = response.data;
+      data.sort((a, b) => a.use_by_date.localeCompare(b.use_by_date));
+      setPantryItems(data);
     });
   };
 
