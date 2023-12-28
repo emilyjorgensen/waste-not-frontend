@@ -40,7 +40,7 @@ export function Header() {
                   </Link>
                 </div>
               ) : (
-                <Link className="nav-link disabled" to="/logout">
+                <Link className="nav-link" to="/logout">
                   Logout
                 </Link>
               )}
