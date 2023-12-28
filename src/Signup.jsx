@@ -55,7 +55,7 @@ export function Signup() {
           <input name="password" type="password" className="form-control" id="inputPassword" />
         </div>
         <div className="col-12">
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-secondary">
             Sign up
           </button>
         </div>
