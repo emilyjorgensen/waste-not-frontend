@@ -4,7 +4,7 @@ export function IngredientsShow(props) {
     event.preventDefault();
     const params = new FormData(event.target);
     props.onCreatePantry(params, () => event.target.reset());
-    window.location.href = "/";
+    window.location.href = "/ingredients";
   };
 
   return (
