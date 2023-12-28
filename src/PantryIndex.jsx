@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 
 export function PantryIndex(props) {
+  // keeps track of the selected category for useEffect
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [filteredPantry, setFilteredPantry] = useState(props.pantry_items);
 
@@ -10,6 +11,7 @@ export function PantryIndex(props) {
   const filterByCategory = (category) => {
     setSelectedCategory(category);
 
+    // added default category "All" to remove filtering
     if (category === "All") {
       setFilteredPantry(props.pantry_items);
     } else {
@@ -21,6 +23,7 @@ export function PantryIndex(props) {
     }
   };
 
+  // useEffect to update filteredPantry when selectedCategory changes
   useEffect(() => {
     if (selectedCategory === "All") {
       setFilteredPantry(props.pantry_items);
