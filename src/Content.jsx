@@ -91,33 +91,31 @@ export function Content() {
   useEffect(handleIndexPantry, []);
 
   return (
-    <main>
-      <Link to="/ingredients">All Ingredients</Link>
-      <br />
-      <Link to="/pantry">My Pantry</Link>
-      <br />
-      <Routes>
-        <Route index element={<Home />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/logout" element={<LogoutLink />} />
-        <Route
-          path="/ingredients"
-          element={<IngredientsIndex ingredients={ingredients} onShowIngredient={handleShowIngredient} />}
-        />
-        <Route path="/pantry" element={<PantryIndex pantry_items={pantry_items} onShowPantry={handleShowPantry} />} />
-      </Routes>
+    <div className="container">
+      <main>
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/logout" element={<LogoutLink />} />
+          <Route
+            path="/ingredients"
+            element={<IngredientsIndex ingredients={ingredients} onShowIngredient={handleShowIngredient} />}
+          />
+          <Route path="/pantry" element={<PantryIndex pantry_items={pantry_items} onShowPantry={handleShowPantry} />} />
+        </Routes>
 
-      <Modal show={isPantryShowVisible} onClose={handleClose}>
-        <PantryShow
-          pantry_item={currentPantryItem}
-          onUpdatePantry={handleUpdatePantry}
-          onDestroyPantryItem={handleDestroyPantryItem}
-        />
-      </Modal>
-      <Modal show={isIngredientShowVisible} onClose={handleClose}>
-        <IngredientsShow ingredient={currentIngredient} onCreatePantry={handleCreatePantry} />
-      </Modal>
-    </main>
+        <Modal show={isPantryShowVisible} onClose={handleClose}>
+          <PantryShow
+            pantry_item={currentPantryItem}
+            onUpdatePantry={handleUpdatePantry}
+            onDestroyPantryItem={handleDestroyPantryItem}
+          />
+        </Modal>
+        <Modal show={isIngredientShowVisible} onClose={handleClose}>
+          <IngredientsShow ingredient={currentIngredient} onCreatePantry={handleCreatePantry} />
+        </Modal>
+      </main>
+    </div>
   );
 }
