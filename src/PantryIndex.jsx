@@ -1,36 +1,43 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export function PantryIndex(props) {
+  const [selectedCategory, setSelectedCategory] = useState("All");
   const [filteredPantry, setFilteredPantry] = useState(props.pantry_items);
 
-  const handleFilterPantry = (category) => {
-    const query = props.pantry_items.filter((pantry_item) => pantry_item.category === category);
-    console.log(query);
+  const categories = Array.from(new Set(props.pantry_items.map((pantry_item) => pantry_item.category)));
 
-    if (!query) {
+  const filterByCategory = (category) => {
+    setSelectedCategory(category);
+
+    if (category === "All") {
       setFilteredPantry(props.pantry_items);
-      return;
+    } else {
+      setFilteredPantry(
+        props.pantry_items.filter((pantry_item) => {
+          return pantry_item.category === category;
+        })
+      );
     }
-
-    setFilteredPantry(query);
   };
 
-  // const filterByCategory = (category) => {
-  //   setFilteredPantry(
-  //     props.pantry_items.filter((pantry_item) => {
-  //       return pantry_item.category === category;
-  //     })
-  //   );
-  // };
-
-  const categories = Array.from(new Set(props.pantry_items.map((pantry_item) => pantry_item.category)));
+  useEffect(() => {
+    if (selectedCategory === "All") {
+      setFilteredPantry(props.pantry_items);
+    } else {
+      setFilteredPantry(
+        props.pantry_items.filter((pantry_item) => {
+          return pantry_item.category === selectedCategory;
+        })
+      );
+    }
+  }, [selectedCategory, props.pantry_items]);
 
   return (
     <div>
       <h1>My Pantry:</h1>
-      <select onChange={(e) => handleFilterPantry(e.target.value)}>
-        <option defaultValue="">Select category</option>
+      <select value={selectedCategory} onChange={(e) => filterByCategory(e.target.value)}>
+        <option value="All">all categories</option>
         {categories.map((category) => {
           return <option key={category}>{category}</option>;
         })}
