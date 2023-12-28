@@ -45,17 +45,31 @@ export function PantryIndex(props) {
           return <option key={category}>{category}</option>;
         })}
       </select>
-      {filteredPantry.map((pantry_item) => (
-        <div key={pantry_item.id}>
-          <img src={pantry_item.image_url} alt="ingredient image" width="300px" />
-          <p>Ingredient: {pantry_item.name}</p>
-          <p>Amount: {pantry_item.amount}</p>
-          <p>Category: {pantry_item.category}</p>
-          <p>Use By: {pantry_item.use_by_date}</p>
-          <button onClick={() => props.onShowPantry(pantry_item)}>More Info!</button>
-        </div>
-      ))}
-      {filteredPantry.length === 0 && <div>No pantry items matching the filter</div>}
+      <div className="row row-cols-1 row-cols-md-3 g-4">
+        {filteredPantry.map((pantry_item) => (
+          <div key={pantry_item.id} className="col">
+            <div className="card mb-3">
+              <img src={pantry_item.image_url} className="card-img-top" alt="ingredient image" />
+              <div className="card-body">
+                <h5 className="card-title">{pantry_item.name}</h5>
+                <p>Amount: {pantry_item.amount}</p>
+                <p>Category: {pantry_item.category}</p>
+                <p>Use By: {pantry_item.use_by_date}</p>
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#staticBackdrop"
+                  onClick={() => props.onShowPantry(pantry_item)}
+                >
+                  More Info!
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
+        {filteredPantry.length === 0 && <div>No pantry items matching the filter</div>}
+      </div>
     </div>
   );
 }

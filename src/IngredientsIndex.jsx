@@ -28,7 +28,7 @@ export function IngredientsIndex(props) {
           .map((ingredient) => (
             <div key={ingredient.id} className="col">
               <div className="card mb-3">
-                <img src={ingredient.image_url} className="card-img-top" alt="blog post image" />
+                <img src={ingredient.image_url} className="card-img-top" alt="ingredient image" />
               </div>
               <div className="card-body">
                 <h3 className="card-title">{ingredient.name}</h3>
