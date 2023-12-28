@@ -4,23 +4,33 @@ import { useState } from "react";
 export function PantryIndex(props) {
   const [filteredPantry, setFilteredPantry] = useState(props.pantry_items);
 
-  const filterByCategory = (category) => {
-    setFilteredPantry(
-      props.pantry_items.filter((pantry_item) => {
-        return pantry_item.category === category;
-      })
-    );
+  const handleFilterPantry = (category) => {
+    const query = props.pantry_items.filter((pantry_item) => pantry_item.category === category);
+    console.log(query);
+
+    if (!query) {
+      setFilteredPantry(props.pantry_items);
+      return;
+    }
+
+    setFilteredPantry(query);
   };
+
+  // const filterByCategory = (category) => {
+  //   setFilteredPantry(
+  //     props.pantry_items.filter((pantry_item) => {
+  //       return pantry_item.category === category;
+  //     })
+  //   );
+  // };
 
   const categories = Array.from(new Set(props.pantry_items.map((pantry_item) => pantry_item.category)));
 
   return (
     <div>
       <h1>My Pantry:</h1>
-      <select onChange={(e) => filterByCategory(e.target.value)}>
-        <option value="" disabled selected>
-          Select category
-        </option>
+      <select onChange={(e) => handleFilterPantry(e.target.value)}>
+        <option defaultValue="">Select category</option>
         {categories.map((category) => {
           return <option key={category}>{category}</option>;
         })}
