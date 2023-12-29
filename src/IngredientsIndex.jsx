@@ -6,10 +6,12 @@ export function IngredientsIndex(props) {
 
   return (
     <div className="container">
-      <form action="search">
+      <form action="search" className="d-flex">
         <input
+          className="form-control me-2"
           type="search"
           placeholder="Search"
+          aria-label="Search"
           value={searchFilter}
           onChange={(event) => setSearchFilter(event.target.value)}
           list="names"
@@ -19,7 +21,9 @@ export function IngredientsIndex(props) {
             <option key={ingredient.id} value={ingredient.name} />
           ))}
         </datalist>
-        <button type="submit">Search</button>
+        <button className="btn btn-outline-success" type="submit">
+          Search
+        </button>
       </form>
       <h1>All ingredients</h1>
       <div className="row row-cols-1 row-cols-md-3 g-4">
