@@ -52,9 +52,9 @@ export function PantryIndex(props) {
               <img src={pantry_item.image_url} className="card-img-top" alt="ingredient image" />
               <div className="card-body">
                 <h5 className="card-title">{pantry_item.name}</h5>
-                <p>Amount: {pantry_item.amount}</p>
-                <p>Category: {pantry_item.category}</p>
-                <p>Use By: {pantry_item.use_by_date}</p>
+                <p className="m-0">Amount: {pantry_item.amount}</p>
+                <p className="m-0">Category: {pantry_item.category}</p>
+                <p className="mb-2">Use By: {pantry_item.use_by_date}</p>
                 <button
                   type="button"
                   className="btn btn-secondary"

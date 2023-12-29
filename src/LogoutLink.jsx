@@ -10,7 +10,7 @@ export function LogoutLink() {
 
   return (
     <div>
-      <h5 className="display-6">Ready to leave?</h5>
+      <h5 className="display-5">Ready to leave?</h5>
       <button className="btn btn-secondary" href="#" onClick={handleClick}>
         Logout
       </button>

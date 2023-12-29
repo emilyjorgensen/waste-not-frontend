@@ -35,7 +35,7 @@ export function IngredientsIndex(props) {
                 <img src={ingredient.image_url} className="card-img-top" alt="ingredient image" />
               </div>
               <div className="card-body">
-                <h3 className="card-title">{ingredient.name}</h3>
+                <h5 className="card-title">{ingredient.name}</h5>
                 <button
                   type="button"
                   className="btn btn-secondary"

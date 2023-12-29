@@ -14,7 +14,7 @@ export function PantryShow(props) {
     <div>
       <h1>Pantry Item Information</h1>
       <img src={props.pantry_item.image_url} alt="pantry item image" width="300px" />
-      <h5>{props.pantry_item.name}</h5>
+      <h5 className="mt-1">{props.pantry_item.name}</h5>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           Amount: <input defaultValue={props.pantry_item.amount} name="amount" type="text" className="form-control" />
@@ -32,7 +32,7 @@ export function PantryShow(props) {
           Update pantry item
         </button>
       </form>
-      <button className="btn btn-danger" onClick={handleClick}>
+      <button className="btn btn-danger mt-2" onClick={handleClick}>
         Destroy Pantry Item
       </button>
     </div>
