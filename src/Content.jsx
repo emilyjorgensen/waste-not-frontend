@@ -9,7 +9,7 @@ import { PantryIndex } from "./PantryIndex";
 import { IngredientsShow } from "./IngredientsShow";
 import { PantryShow } from "./PantryShow";
 import { Modal } from "./Modal";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 export function Content() {
   const [ingredients, setIngredients] = useState([]);
