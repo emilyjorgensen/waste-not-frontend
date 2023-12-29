@@ -7,7 +7,7 @@ export function IngredientsIndex(props) {
   return (
     <div className="container">
       <h1 className="display-1">All Ingredients</h1>
-      <form action="search" className="d-flex">
+      <form action="search" className="d-flex pb-5">
         <input
           className="form-control me-2"
           type="search"
