@@ -31,7 +31,7 @@ export function IngredientsIndex(props) {
           .filter((ingredient) => ingredient.name.toLowerCase().includes(searchFilter.toLowerCase()))
           .map((ingredient) => (
             <div key={ingredient.id} className="col">
-              <div className="card mb-3">
+              <div className="card">
                 <img src={ingredient.image_url} className="card-img-top" alt="ingredient image" />
               </div>
               <div className="card-body">
