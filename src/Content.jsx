@@ -20,7 +20,6 @@ export function Content() {
   const [currentPantryItem, setCurrentPantryItem] = useState({});
 
   const handleIndexIngredients = () => {
-    console.log("handleIndexIngredients");
     axios.get("http://localhost:3000/ingredients.json").then((response) => {
       console.log(response.data);
       setIngredients(response.data);
@@ -28,7 +27,6 @@ export function Content() {
   };
 
   const handleIndexPantry = () => {
-    console.log("handleIndexPantry");
     axios.get("http://localhost:3000/pantry_items.json").then((response) => {
       let data = response.data;
       data.sort((a, b) => a.use_by_date.localeCompare(b.use_by_date));
@@ -37,7 +35,6 @@ export function Content() {
   };
 
   const handleCreatePantry = (params, successCallback) => {
-    console.log("handleCreatePantry", params);
     axios.post("http://localhost:3000/pantry_items.json", params).then((response) => {
       setPantryItems([...pantry_items, response.data]);
       successCallback();
@@ -45,19 +42,16 @@ export function Content() {
   };
 
   const handleShowIngredient = (ingredient) => {
-    console.log("handleShowIngredient", ingredient);
     setIsIngredientShowVisible(true);
     setCurrentIngredient(ingredient);
   };
 
   const handleShowPantry = (pantry_item) => {
-    console.log("handleShowPantry", pantry_item);
     setIsPantryShowVisible(true);
     setCurrentPantryItem(pantry_item);
   };
 
   const handleUpdatePantry = (id, params, successCallback) => {
-    console.log("handleUpdatePantry", params);
     axios.patch(`http://localhost:3000/pantry_items/${id}.json`, params).then((response) => {
       setPantryItems(
         pantry_items.map((pantry_item) => {
@@ -74,7 +68,6 @@ export function Content() {
   };
 
   const handleDestroyPantryItem = (pantry_item) => {
-    console.log("handleDestroyPantryItem", pantry_item);
     axios.delete(`http://localhost:3000/pantry_items/${pantry_item.id}.json`).then((response) => {
       setPantryItems(pantry_items.filter((p) => p.id !== pantry_item.id));
       handleClose();
@@ -82,7 +75,6 @@ export function Content() {
   };
 
   const handleClose = () => {
-    console.log("handleClose");
     setIsPantryShowVisible(false);
     setIsIngredientShowVisible(false);
   };
