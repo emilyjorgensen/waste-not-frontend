@@ -38,7 +38,7 @@ export function PantryIndex(props) {
 
   return (
     <div>
-      <h1>My Pantry:</h1>
+      <h1 className="display-1">My Pantry</h1>
       <select value={selectedCategory} onChange={(e) => filterByCategory(e.target.value)}>
         <option value="All">all categories</option>
         {categories.map((category) => {

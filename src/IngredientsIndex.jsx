@@ -6,6 +6,7 @@ export function IngredientsIndex(props) {
 
   return (
     <div className="container">
+      <h1 className="display-1">All Ingredients</h1>
       <form action="search" className="d-flex">
         <input
           className="form-control me-2"
@@ -25,7 +26,6 @@ export function IngredientsIndex(props) {
           Search
         </button>
       </form>
-      <h1>All ingredients</h1>
       <div className="row row-cols-1 row-cols-md-3 g-4">
         {props.ingredients
           .filter((ingredient) => ingredient.name.toLowerCase().includes(searchFilter.toLowerCase()))
