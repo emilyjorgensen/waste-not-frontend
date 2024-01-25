@@ -10,7 +10,7 @@ export function IngredientsShow(props) {
   return (
     <div>
       <h1>Ingredient Information</h1>
-      <img src={props.ingredient.image_url} alt="ingredient image" width="300px" />
+      <img src={props.ingredient.image_url} className="mx-auto" alt="ingredient image" width="300px" />
       <h5 className="mt-1">{props.ingredient.name}</h5>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
