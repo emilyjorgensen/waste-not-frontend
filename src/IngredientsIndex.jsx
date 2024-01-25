@@ -32,19 +32,15 @@ export function IngredientsIndex(props) {
           .map((ingredient) => (
             <div key={ingredient.id} className="col">
               <div className="card">
-                <img src={ingredient.image_url} className="card-img-top" alt="ingredient image" />
-              </div>
-              <div className="card-body">
-                <h5 className="card-title">{ingredient.name}</h5>
-                <button
-                  type="button"
-                  className="btn btn-secondary"
-                  data-bs-toggle="modal"
-                  data-bs-target="#staticBackdrop"
-                  onClick={() => props.onShowIngredient(ingredient)}
-                >
-                  Add to Pantry!
-                </button>
+                <div className="card-body">
+                  <img
+                    src={ingredient.image_url}
+                    className="card-img-top"
+                    alt="ingredient image"
+                    onClick={() => props.onShowIngredient(ingredient)}
+                  />
+                </div>
+                <h5 className="card-title text-center">{ingredient.name}</h5>
               </div>
             </div>
           ))}
