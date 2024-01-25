@@ -1,3 +1,26 @@
 html {
   scroll-behavior: smooth;
 }
+
+body {
+  background-image: url('./assets/a-few-spices.jpg') !important;
+}
+
+.card {
+  transition: all 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.1);
+}
+
+.card-body{
+  height: 200px;
+  overflow: hidden;
+}
+
+.card-img-top {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
