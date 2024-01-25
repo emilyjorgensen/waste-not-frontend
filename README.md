@@ -3,6 +3,7 @@
 ## Overview
 
 This is the frontend for Waste-Not: Kitchen, a React application that interacts with the waste-not-api to provide a user interface for managing ingredients, pantry items, and user-related functionalities, with the goal of managing kitchen items to prevent food waste.
+![alt text](https://scontent.fmli1-1.fna.fbcdn.net/v/t39.30808-6/422832864_10160356192618173_1483527010324158792_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=a73e89&_nc_ohc=A_vOa1scAh8AX9xi089&_nc_ht=scontent.fmli1-1.fna&oh=00_AfA5m4kknTB7Qcltoziem4dy9hG4jEk8S3v9AfLk3R0tNw&oe=65B6F44C "Screenshot of Ingredients Index")
 
 ## Table of Contents
 
