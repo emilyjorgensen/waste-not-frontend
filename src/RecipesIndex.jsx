@@ -25,7 +25,7 @@ export function RecipesIndex() {
             <div key={recipe.id} className="col">
               <div className="card">
                 <div className="card-body">
-                  <img src={recipe.image} className="card-img-top" alt="recipe image" />
+                  <img src={recipe.image} className="card-img-top" alt={recipe.title} />
                 </div>
                 <h5 className="card-title text-center">{recipe.title}</h5>
               </div>
