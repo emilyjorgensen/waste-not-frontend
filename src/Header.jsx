@@ -30,6 +30,9 @@ export function Header() {
               <Link className="nav-link " aria-current="page" to="/pantry">
                 My Pantry
               </Link>
+              <Link className="nav-link " aria-current="page" to="/recipes">
+                Recipes
+              </Link>
               {localStorage.jwt === undefined ? (
                 <div>
                   <Link className="nav-link" to="/signup">
