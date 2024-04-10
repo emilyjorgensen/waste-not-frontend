@@ -8,6 +8,7 @@ import { IngredientsIndex } from "./IngredientsIndex";
 import { PantryIndex } from "./PantryIndex";
 import { IngredientsShow } from "./IngredientsShow";
 import { PantryShow } from "./PantryShow";
+import { RecipesIndex } from "./RecipesIndex";
 import { Modal } from "./Modal";
 import { Routes, Route } from "react-router-dom";
 
@@ -83,34 +84,32 @@ export function Content() {
   useEffect(handleIndexPantry, []);
 
   return (
-      <div className="container">
-        <main>
-          <Routes>
-            <Route index element={<Home />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/logout" element={<LogoutLink />} />
-            <Route
-              path="/ingredients"
-              element={<IngredientsIndex ingredients={ingredients} onShowIngredient={handleShowIngredient} />}
-            />
-            <Route
-              path="/pantry"
-              element={<PantryIndex pantry_items={pantry_items} onShowPantry={handleShowPantry} />}
-            />
-          </Routes>
+    <div className="container">
+      <main>
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/logout" element={<LogoutLink />} />
+          <Route
+            path="/ingredients"
+            element={<IngredientsIndex ingredients={ingredients} onShowIngredient={handleShowIngredient} />}
+          />
+          <Route path="/pantry" element={<PantryIndex pantry_items={pantry_items} onShowPantry={handleShowPantry} />} />
+          <Route path="/recipes" element={<RecipesIndex />} />
+        </Routes>
 
-          <Modal show={isPantryShowVisible} onClose={handleClose}>
-            <PantryShow
-              pantry_item={currentPantryItem}
-              onUpdatePantry={handleUpdatePantry}
-              onDestroyPantryItem={handleDestroyPantryItem}
-            />
-          </Modal>
-          <Modal show={isIngredientShowVisible} onClose={handleClose}>
-            <IngredientsShow ingredient={currentIngredient} onCreatePantry={handleCreatePantry} />
-          </Modal>
-        </main>
-      </div>
+        <Modal show={isPantryShowVisible} onClose={handleClose}>
+          <PantryShow
+            pantry_item={currentPantryItem}
+            onUpdatePantry={handleUpdatePantry}
+            onDestroyPantryItem={handleDestroyPantryItem}
+          />
+        </Modal>
+        <Modal show={isIngredientShowVisible} onClose={handleClose}>
+          <IngredientsShow ingredient={currentIngredient} onCreatePantry={handleCreatePantry} />
+        </Modal>
+      </main>
+    </div>
   );
 }
