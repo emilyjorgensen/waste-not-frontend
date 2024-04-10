@@ -8,12 +8,19 @@ export function RecipesIndex() {
   }, []);
 
   const getPopular = async () => {
-    const api = await fetch(
-      `https://api.spoonacular.com/recipes/random?apiKey=${import.meta.env.VITE_APP_API_KEY}&number=9`
-    );
-    const data = await api.json();
-    console.log(data.recipes);
-    setPopular(data.recipes);
+    const check = localStorage.getItem("popular");
+
+    if (check) {
+      setPopular(JSON.parse(check));
+    } else {
+      const api = await fetch(
+        `https://api.spoonacular.com/recipes/random?apiKey=${import.meta.env.VITE_APP_API_KEY}&number=9`
+      );
+      const data = await api.json();
+      localStorage.setItem("popular", JSON.stringify(data.recipes));
+      console.log(data.recipes);
+      setPopular(data.recipes);
+    }
   };
 
   return (
