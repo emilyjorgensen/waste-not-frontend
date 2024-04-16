@@ -1,6 +1,7 @@
+import React from "react";
 import { RecipesIndex } from "./RecipesIndex";
 
-function Recipes() {
+export function Recipes() {
   return (
     <main>
       <RecipesIndex />
