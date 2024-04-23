@@ -1,7 +1,18 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export function RecipesIndex() {
   const [popular, setPopular] = useState([]);
+
+  // import from RecipesSearch.jsx
+  const [input, setInput] = useState("");
+  const navigate = useNavigate();
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    navigate(`/searched/${input}`);
+  };
+  // end import
 
   useEffect(() => {
     getPopular();
@@ -25,6 +36,24 @@ export function RecipesIndex() {
 
   return (
     <div className="container">
+      {/* imported from RecipesSearch.jsx */}
+      <div>
+        <h1 className="display-1">Find a Recipe</h1>
+        <form action="search" className="d-flex pb-5">
+          <input
+            className="form-control me-2"
+            type="text"
+            placeholder="ingredient or keyword"
+            aria-label="Search"
+            onChange={(e) => setInput(e.target.value)}
+            value={input}
+          />
+          <button onClick={submitHandler} className="btn btn-outline-success" type="submit">
+            Search
+          </button>
+        </form>
+      </div>
+      {/* end import */}
       <h1>Popular Recipes</h1>
       <div className="row row-cols-1 row-cols-md-3 g-4">
         {popular.map((recipe) => {

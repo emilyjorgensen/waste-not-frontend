@@ -8,9 +8,10 @@ import { IngredientsIndex } from "./IngredientsIndex";
 import { PantryIndex } from "./PantryIndex";
 import { IngredientsShow } from "./IngredientsShow";
 import { PantryShow } from "./PantryShow";
-import { Recipes } from "./Recipes";
+import { RecipesIndex } from "./RecipesIndex";
 import { Modal } from "./Modal";
 import { Routes, Route } from "react-router-dom";
+import { RecipesSearched } from "./RecipesSearched";
 
 export function Content() {
   const [ingredients, setIngredients] = useState([]);
@@ -96,7 +97,8 @@ export function Content() {
             element={<IngredientsIndex ingredients={ingredients} onShowIngredient={handleShowIngredient} />}
           />
           <Route path="/pantry" element={<PantryIndex pantry_items={pantry_items} onShowPantry={handleShowPantry} />} />
-          <Route path="/recipes" element={<Recipes />} />
+          <Route path="/recipes" element={<RecipesIndex />} />
+          <Route path="/searched/:search" element={<RecipesSearched />} />
         </Routes>
 
         <Modal show={isPantryShowVisible} onClose={handleClose}>
