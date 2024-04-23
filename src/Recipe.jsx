@@ -23,7 +23,12 @@ export function Recipe() {
       <div>
         <img src={details.image} alt={details.title} />
       </div>
-      <div></div>
+      <div>
+        <h3 dangerouslySetInnerHTML={{ __html: details.summary }}></h3>
+      </div>
+      <div>
+        <h3 dangerouslySetInnerHTML={{ __html: details.instructions }}></h3>
+      </div>
     </div>
   );
 }
