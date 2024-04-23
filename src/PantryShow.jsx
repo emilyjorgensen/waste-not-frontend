@@ -1,4 +1,6 @@
 /* eslint-disable react/prop-types */
+import { useNavigate } from "react-router-dom";
+
 export function PantryShow(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -8,6 +10,12 @@ export function PantryShow(props) {
 
   const handleClick = () => {
     props.onDestroyPantryItem(props.pantry_item);
+  };
+
+  const navigate = useNavigate();
+  const handleRecipeSearch = () => {
+    navigate(`/searched/${props.pantry_item.name}`);
+    props.onClose();
   };
 
   return (
@@ -32,9 +40,16 @@ export function PantryShow(props) {
           Update pantry item
         </button>
       </form>
-      <button className="btn btn-danger mt-2" onClick={handleClick}>
-        Destroy Pantry Item
-      </button>
+      <div>
+        <button type="button" className="btn btn-success mt-2" onClick={handleRecipeSearch}>
+          Find Recipes
+        </button>
+      </div>
+      <div>
+        <button className="btn btn-danger mt-2" onClick={handleClick}>
+          Destroy Pantry Item
+        </button>
+      </div>
     </div>
   );
 }

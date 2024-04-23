@@ -108,6 +108,7 @@ export function Content() {
             pantry_item={currentPantryItem}
             onUpdatePantry={handleUpdatePantry}
             onDestroyPantryItem={handleDestroyPantryItem}
+            onClose={handleClose}
           />
         </Modal>
         <Modal show={isIngredientShowVisible} onClose={handleClose}>

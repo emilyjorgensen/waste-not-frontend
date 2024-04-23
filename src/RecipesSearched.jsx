@@ -26,12 +26,12 @@ export function RecipesSearched() {
           return (
             <div key={item.id} className="col">
               <div className="card">
-                <Link to={`/recipe/${item.id}`}>
-                  <div className="card-body">
+                <div className="card-body">
+                  <Link to={`/recipe/${item.id}`}>
                     <img src={item.image} alt={item.title} className="card-img-top" />
-                  </div>
-                  <h5 className="card-title text-center">{item.title}</h5>
-                </Link>
+                  </Link>
+                </div>
+                <h5 className="card-title text-center">{item.title}</h5>
               </div>
             </div>
           );
