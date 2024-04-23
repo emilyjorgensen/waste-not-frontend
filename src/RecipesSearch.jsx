@@ -1,11 +1,13 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export function RecipesSearch() {
   const [input, setInput] = useState("");
+  const navigate = useNavigate();
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log("hey");
+    navigate(`/searched/${input}`);
   };
 
   return (
@@ -14,7 +16,7 @@ export function RecipesSearch() {
       <form action="search" className="d-flex pb-5">
         <input
           className="form-control me-2"
-          type="search"
+          type="text"
           placeholder="ingredient or keyword"
           aria-label="Search"
           value={input}

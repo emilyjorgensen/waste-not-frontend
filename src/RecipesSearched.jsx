@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export function RecipesSearched() {
   const [searchedRecipes, setSearchedRecipes] = useState([]);
@@ -25,10 +26,12 @@ export function RecipesSearched() {
           return (
             <div key={item.id} className="col">
               <div className="card">
-                <div className="card-body">
-                  <img src={item.image} alt={item.title} className="card-img-top" />
-                </div>
-                <h5 className="card-title text-center">{item.title}</h5>
+                <Link to={`/recipe/${item.id}`}>
+                  <div className="card-body">
+                    <img src={item.image} alt={item.title} className="card-img-top" />
+                  </div>
+                  <h5 className="card-title text-center">{item.title}</h5>
+                </Link>
               </div>
             </div>
           );

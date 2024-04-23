@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export function RecipesIndex() {
   const [popular, setPopular] = useState([]);
@@ -60,10 +61,12 @@ export function RecipesIndex() {
           return (
             <div key={recipe.id} className="col">
               <div className="card">
-                <div className="card-body">
-                  <img src={recipe.image} className="card-img-top" alt={recipe.title} />
-                </div>
-                <h5 className="card-title text-center">{recipe.title}</h5>
+                <Link to={`/recipe/${recipe.id}`}>
+                  <div className="card-body">
+                    <img src={recipe.image} className="card-img-top" alt={recipe.title} />
+                  </div>
+                  <h5 className="card-title text-center">{recipe.title}</h5>
+                </Link>
               </div>
             </div>
           );
